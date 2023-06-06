@@ -1,0 +1,7 @@
+.random-btn{
+    background: #FF4E50; 
+    background: -webkit-linear-gradient(to right,  #FF4E50, #d49e21);
+    background: linear-gradient(to right,  #FF4E50, #d49e21);
+    border: none;
+    
+}
