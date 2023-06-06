@@ -6,7 +6,7 @@ const Navbar = () => {
     const handleLogout = () => {
         
     }
-    const user = true
+    const user = false
     return (
         <div className='container'>
             <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -16,7 +16,7 @@ const Navbar = () => {
                     <span className="navbar-toggler-icon"></span>
                     </button>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <ul className="navbar-nav mx-auto mb-2 mb-lg-0">
                             <li className="nav-item">
                               <Link className="nav-link active me-3" to='/'>Home</Link>
                             </li>
@@ -26,10 +26,13 @@ const Navbar = () => {
                             <li className="nav-item">
                               <Link className="nav-link active me-3" to='/'>Classes</Link>
                             </li>
-                            <li className="nav-item">
-                              <Link className="nav-link active me-3" to='/'>Dashboard</Link>
-                            </li>
-                            <div>
+                            {user ? 
+                                <li className="nav-item">
+                                <Link className="nav-link active me-3" to='/'>Dashboard</Link>
+                                </li>: <></>
+                            }
+                        </ul>
+                        <div>
                                 {
                                     user ? <button onClick={handleLogout}  className='random-btn btn me-3 btn-danger '>Log Out</button>
                                     : <Link to='/login'><button style={{width:"80px"}} className='random-btn btn btn-danger me-3 '>Login</button></Link>
@@ -46,8 +49,7 @@ const Navbar = () => {
                                     </>
                                     : <></>
                                 }
-                            </div>
-                        </ul>
+                        </div>
                     </div>
                 </div>
             </nav>

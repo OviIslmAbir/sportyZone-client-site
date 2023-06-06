@@ -11,10 +11,13 @@
   },
   "dependencies": {
     "localforage": "^1.10.0",
+    "lottie-react": "^2.4.0",
     "match-sorter": "^6.3.1",
     "react": "^18.2.0",
     "react-awesome-slider": "^4.1.0",
     "react-dom": "^18.2.0",
+    "react-hook-form": "^7.44.3",
+    "react-icons": "^4.9.0",
     "react-router-dom": "^6.11.2",
     "react-tooltip": "^5.13.1",
     "sort-by": "^1.2.0"
