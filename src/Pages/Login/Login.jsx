@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import useTitle from '../../Hooks/useTitle';
 import Lottie from "lottie-react";
 import phone from "../../assets/phone.json";
@@ -6,11 +6,16 @@ import { FaEnvelope, FaKey } from 'react-icons/fa';
 import '../../Common/Style/Style.css'
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
+import {BsFillEyeFill, BsFillEyeSlashFill } from 'react-icons/bs';
 const Login = () => {
     useTitle("Login")
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => {
         console.log(data)
+    };
+    const [showPassword, setShowPassword] = useState(false);
+    const togglePasswordVisibility = () => {
+        setShowPassword(!showPassword);
     };
     return (
         <div className='container my-5'>
@@ -31,9 +36,12 @@ const Login = () => {
                         <div className="input-group my-3">
                             <span className="input-group-text"><FaKey/></span>
                             <div className="form-floating">
-                                <input type="password" {...register("password", { required: true })} className="form-control"  placeholder="Password"/>
+                                <input type={showPassword ? 'text' : 'password'} style={{borderRight:"none"}}  {...register("password", { required: true })} className="form-control"  placeholder="Password"/>
                                 <label>Password</label>
                             </div>
+                            <span className="input-group-text" style={{borderLeft:"none"}} onClick={togglePasswordVisibility}>
+                                    {showPassword ? <BsFillEyeFill style={{fontSize:"22px"}}/> : <BsFillEyeSlashFill style={{fontSize:"22px"}}/>}
+                            </span>
                         </div>
                         <div>
                             <input type="submit" value="Login" className='random-btn btn w-100 p-3 text-white' />
