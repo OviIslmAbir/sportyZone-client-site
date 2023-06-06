@@ -1,7 +1,6 @@
 .random-btn{
-    background: #FF4E50; 
-    background: -webkit-linear-gradient(to right,  #FF4E50, #d49e21);
-    background: linear-gradient(to right,  #FF4E50, #d49e21);
+    background: crimson; 
+    background: -webkit-linear-gradient(to right,  crimson, orange);
+    background: linear-gradient(to right,  crimson, orange);
     border: none;
-    
 }
