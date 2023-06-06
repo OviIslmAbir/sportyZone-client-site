@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import {Tooltip} from 'react-tooltip';
 import "../Style/Style.css"
+import { AuthContext } from '../../Provider/AuthProvider';
 const Navbar = () => {
+    const {user, logOut} = useContext(AuthContext)
     const handleLogout = () => {
-        
+        logOut()
+          .then(() => {})
+          .catch(() => {})
     }
-    const user = false
     return (
         <div className='container'>
             <nav className="navbar navbar-expand-lg bg-body-tertiary">

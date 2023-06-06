@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import useTitle from '../../Hooks/useTitle';
 import Lottie from "lottie-react";
 import phone from "../../assets/phone.json";
@@ -7,11 +7,29 @@ import {BsFillEyeFill, BsFillEyeSlashFill } from 'react-icons/bs';
 import '../../Common/Style/Style.css'
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Provider/AuthProvider';
 const Register = () => {
     useTitle("Register")
+    const {createUser, user, updateUserProfile} = useContext(AuthContext)
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const [error, setError] = useState('')
     const onSubmit = data => {
-        console.log(data)
+        if (data.password !== data.confirmPassword) {
+            setError('Password and Confirm password do not match.');
+            return;
+        }
+        createUser(data.email, data.password)
+        .then(result => {
+            const newUser = result.user;
+            console.log(newUser);
+
+            updateUserProfile(data.name, data.photo)
+               .then(() => {})
+        })
+        .catch(error => {
+            console.log(error.message)
+        })
+
     };
     const [showPassword, setShowPassword] = useState(false);
     const togglePasswordVisibility = () => {
@@ -71,12 +89,11 @@ const Register = () => {
                         <div className="input-group my-3">
                             <span className="input-group-text"><FaKey/></span>
                             <div className="form-floating">
-                                <input type="password" className="form-control" placeholder="Confirm Password"  {...register("confirmPassword", {required: true,  
-                                validate: (value) => value === errors.password || 'Passwords do not match',})} />
+                                <input type="password" className="form-control" placeholder="Confirm Password"  {...register("confirmPassword", {required: true})} />
                                 <label>Confirm Password</label>
                             </div>
                         </div>
-                        {errors.confirmPassword && (<p className="text-danger text-center">{errors.confirmPassword.message}</p>)}
+                        {<p className="text-danger text-center">{error}</p>}
                         <div>
                             <input type="submit" value="Register" className='random-btn btn w-100 p-3 text-white' />
                         </div>

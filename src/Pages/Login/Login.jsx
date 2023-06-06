@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import useTitle from '../../Hooks/useTitle';
 import Lottie from "lottie-react";
 import phone from "../../assets/phone.json";
@@ -7,11 +7,30 @@ import '../../Common/Style/Style.css'
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import {BsFillEyeFill, BsFillEyeSlashFill } from 'react-icons/bs';
+import { AuthContext } from '../../Provider/AuthProvider';
+import Swal from 'sweetalert2'
 const Login = () => {
     useTitle("Login")
+    const {login, user} = useContext(AuthContext)
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => {
-        console.log(data)
+        login(data.email, data.password)
+          .then(result => {
+              const loggedUser = result.user
+              console.log(loggedUser)
+              Swal.fire({
+                title: 'User Login Successful.',
+                showClass: {
+                    popup: 'animate__animated animate__fadeInDown'
+                },
+                hideClass: {
+                    popup: 'animate__animated animate__fadeOutUp'
+                }
+            });
+          })
+          .catch(error => {
+            console.log(error.message)
+          })
     };
     const [showPassword, setShowPassword] = useState(false);
     const togglePasswordVisibility = () => {
