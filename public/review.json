@@ -1,0 +1,48 @@
+
+[
+      {
+        "id":1,
+        "student_name": "Frank",
+        "rating": 4.7,
+        "comment": "I'm impressed with the sports website! The content is well-researched and engaging. The interactive features, add an extra level of fun.",
+        "date": "2023-05-08",
+        "image": "https://i.ibb.co/92V3JXR/istockphoto-1152086681-612x612.jpg"
+      },
+      {  
+        "id":2,
+        "student_name": "Lila",
+        "comment": "I love this website! It has a wide range of sports news and updates. The layout is clean and user-friendly. Highly recommended!",
+        "date": "2023-05-20",
+        "image": "https://i.ibb.co/R7s8DsN/portrait-cute-young-brunette-student-holding-exercise-books-isolated-white-wall.jpg"
+      },
+      { 
+        "id": 3,
+        "student_name": "Bob",
+        "comment": "The website provides good information, but it can be slow at times. It would be great if they could improve the loading speed.",
+        "date": "2023-05-18",
+        "image": "https://i.ibb.co/JQSpFsX/istockphoto-938795458-640x640.jpg"
+      },
+      { 
+        "id": 4,
+        "student_name": "Dona",
+        "comment": "Fantastic sports website! I particularly enjoy the live match streaming feature. It keeps me updated with all the action.",
+        "date": "2023-05-15",
+        "image": "https://i.ibb.co/MhtjhFs/lovepik-middle-school-student-in-school-uniform-picture-501705529.jpg"
+      },
+      { 
+        "id": 5,
+        "student_name": "Dave",
+        "comment": "The website lacks variety in its content. It focuses too much on popular sports and neglects niche sports. It could be more inclusive.",
+        "date": "2023-05-12",
+        "image": "https://i.ibb.co/5B4tm24/download.jpg"
+      },
+      { 
+        "id": 6,
+        "student_name": "Eve",
+        "comment": "Overall, a great sports website. It covers a wide range of sports and provides in-depth analysis. The only downside is occasional technical glitches.",
+        "date": "2023-05-10",
+        "image": "https://i.ibb.co/G2gTLh5/1-indian-high-school-girl-student-arms-crossed-standing-smiling-KX38-GF.jpg"
+      }
+]
+
+  
