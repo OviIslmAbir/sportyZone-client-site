@@ -1,0 +1,8 @@
+.cool-footer{
+    background: crimson; 
+    background: -webkit-linear-gradient(to right,  crimson, orange);
+    background: linear-gradient(to right,  crimson, orange);
+}
+.common:hover{
+    color: black;
+}

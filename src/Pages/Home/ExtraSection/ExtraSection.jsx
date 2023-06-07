@@ -16,7 +16,7 @@ const ExtraSection = () => {
         <div className="container mt-5">
             <h2 className="text-center mb-4">What your student says</h2>
              <Swiper
-                    slidesPerView={3}
+                    slidesPerView={2}
                     spaceBetween={30}
                     pagination={{
                     clickable: true,
