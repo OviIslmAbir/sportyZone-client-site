@@ -11,8 +11,8 @@ const PopularClasses = () => {
         },
     })
     return (
-        <div className='container mt-4'>
-            <h2 className='text-center mb-3'>Popular Classes</h2>
+        <div className='container mt-5'>
+            <h2 className='text-center mb-4'>Popular Classes</h2>
             <div>
                 <div className="row">
                     {
@@ -21,7 +21,7 @@ const PopularClasses = () => {
                                 <div className="card mb-3">
                                     <div className="row g-0">
                                         <div className="col-md-4">
-                                            <img src={singleClass.image} style={{height:"100%"}} className="img-fluid rounded-start" alt="..."/>
+                                            <img src={singleClass.image} style={{height:"100%", width:"100%"}} className="img-fluid rounded-start" alt="..."/>
                                         </div>
                                         <div className="col-md-8">
                                             <div className="card-body">

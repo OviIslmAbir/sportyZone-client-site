@@ -24,7 +24,10 @@ const Banner = () => {
     return (
         <div className='container my-4'>
             <Swiper ref={swiperRef} navigation={true} modules={[Navigation]} className="mySwiper" autoplay loop>
-                <SwiperSlide><img style={{height:"550px", width:"100%"}} src="img/banner-2.jpg" /></SwiperSlide>
+                <SwiperSlide>
+                  <img style={{height:"550px", width:"100%"}} src="img/banner-2.jpg" />
+                  <h1>ffdfdfdfd</h1>
+                </SwiperSlide>
                 <SwiperSlide><img style={{height:"550px", width:"100%"}} src="img/banner-1.jpg" /></SwiperSlide>
                 <SwiperSlide><img style={{height:"550px", width:"100%"}} src="img/banner-3.jpg" /></SwiperSlide>
             </Swiper>

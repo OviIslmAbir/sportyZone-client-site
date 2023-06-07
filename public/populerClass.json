@@ -1,61 +1,46 @@
 [
     {
-        "name": "Football",
-        "details": "Football, also known as soccer, is a popular sport.",
+        "className": "Football",
         "instructorName": "John Smith",
-        "studentTotalEnroll": 500,
-        "image": "football.jpg",
-        "price": 50,
-        "availableSeats": 20
+        "email": "john456@gmail.com",
+        "numberOfStudents": 600,
+        "image": "https://i.ibb.co/Qry5wqN/360-F-286470965-via-HM6-ZNjrcv-LENe14y-WQFi1j-Em2j-Ke-V.jpg"
     },
     {
-        "name": "Cricket",
-        "details": "Cricket is a bat-and-ball game played between two teams.",
+        "className": "Cricket",
         "instructorName": "Sarah Johnson",
-        "studentTotalEnroll": 300,
-        "image": "cricket.jpg",
-        "price": 40,
-        "availableSeats": 15
+        "email": "johnson46@gmail.com",
+        "numberOfStudents": 500,
+        "image": "https://i.ibb.co/vPr5vVj/depositphotos-31934609-stock-photo-portrait-of-a-businessman.webp"
     },  
     {
-        "name": "Badminton",
-        "details": "Badminton is a racquet sport played either in singles or doubles.",
-        "instructorName": "Michael Brown",
-        "studentTotalEnroll": 200,
-        "image": "badminton.jpg",
-        "price": 30,
-        "availableSeats": 10
+        "className": "Badminton",
+        "instructorName": "Elizabeth olsen",
+        "email": "elizabeth666@gmail.com",
+        "numberOfStudents": 700,
+        "image": "https://i.ibb.co/xJDGMPj/depositphotos-407705890-stock-photo-young-caucasian-woman-isolated-blue.webp"
     },
     {
-        "name": "Basketball",
-        "details": "Basketball is a team sport played on a rectangular court.",
+        "className": "Basketball",
         "instructorName": "David Wilson",
-        "studentTotalEnroll": 400,
-        "image": "basketball.jpg",
-        "price": 45,
-        "availableSeats": 12
+        "email": "david11@gmail.com",
+        "numberOfStudents": 300,
+        "image": "https://i.ibb.co/f8HGtX1/360-F-525433703-Vu-AJGk-N7-FUo-OR4zh5-U1-Wt0q-ROM2x-Zaeq.jpg"
     },
     {
-        "name": "Tennis",
-        "details": "Tennis is an individual or doubles sport played on a court.",
-        "instructorName": "Emily Davis",
-        "studentTotalEnroll": 250,
-        "image": "tennis.jpg",
-        "price": 55,
-        "availableSeats": 8
+        "className": "Tennis",
+        "instructorName": "Jane foster",
+        "email": "jane667@gmail.com",
+        "numberOfStudents": 300,
+        "image": "https://i.ibb.co/tP7pyCs/depositphotos-335048212-stock-photo-young-caucasian-woman-isolated-who.webp"
     },
 
     {
-        "name": "Volleyball",
-        "details": "Volleyball is a team sport played on a court divided by a net.",
+        "className": "Volleyball",
         "instructorName": "Daniel Thompson",
-        "studentTotalEnroll": 150,
-        "image": "volleyball.jpg",
-        "price": 35,
-        "availableSeats": 6
-      }
-      
-      
-      
+        "email": "daniel267@gmail.com",
+        "numberOfStudents": 300,
+        "image": "https://i.ibb.co/8942Fj5/gettyimages-1314489757-612x612.jpg"
+    }
       
 ]
