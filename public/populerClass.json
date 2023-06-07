@@ -1,0 +1,61 @@
+[
+    {
+        "name": "Football",
+        "details": "Football, also known as soccer, is a popular sport.",
+        "instructorName": "John Smith",
+        "studentTotalEnroll": 500,
+        "image": "football.jpg",
+        "price": 50,
+        "availableSeats": 20
+    },
+    {
+        "name": "Cricket",
+        "details": "Cricket is a bat-and-ball game played between two teams.",
+        "instructorName": "Sarah Johnson",
+        "studentTotalEnroll": 300,
+        "image": "cricket.jpg",
+        "price": 40,
+        "availableSeats": 15
+    },  
+    {
+        "name": "Badminton",
+        "details": "Badminton is a racquet sport played either in singles or doubles.",
+        "instructorName": "Michael Brown",
+        "studentTotalEnroll": 200,
+        "image": "badminton.jpg",
+        "price": 30,
+        "availableSeats": 10
+    },
+    {
+        "name": "Basketball",
+        "details": "Basketball is a team sport played on a rectangular court.",
+        "instructorName": "David Wilson",
+        "studentTotalEnroll": 400,
+        "image": "basketball.jpg",
+        "price": 45,
+        "availableSeats": 12
+    },
+    {
+        "name": "Tennis",
+        "details": "Tennis is an individual or doubles sport played on a court.",
+        "instructorName": "Emily Davis",
+        "studentTotalEnroll": 250,
+        "image": "tennis.jpg",
+        "price": 55,
+        "availableSeats": 8
+    },
+
+    {
+        "name": "Volleyball",
+        "details": "Volleyball is a team sport played on a court divided by a net.",
+        "instructorName": "Daniel Thompson",
+        "studentTotalEnroll": 150,
+        "image": "volleyball.jpg",
+        "price": 35,
+        "availableSeats": 6
+      }
+      
+      
+      
+      
+]
