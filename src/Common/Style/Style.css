@@ -4,3 +4,20 @@
     background: linear-gradient(to right,  crimson, orange);
     border: none;
 }
+.main-content {
+    padding: 2rem;
+    transition: background-color 0.3s ease; 
+}
+  
+.light-content {
+    background-color: #fff;
+    color: black;
+}
+  
+.dark-content {
+    background-color: #121212;
+    color: #fff;
+}
+  
+  
+

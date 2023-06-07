@@ -12,3 +12,6 @@
 .card-img-overlay{
     padding: 0;
 }
+.card{
+    border: none;
+}

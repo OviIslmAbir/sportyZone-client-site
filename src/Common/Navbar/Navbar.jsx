@@ -3,17 +3,23 @@ import { Link } from 'react-router-dom';
 import {Tooltip} from 'react-tooltip';
 import "../Style/Style.css"
 import { AuthContext } from '../../Provider/AuthProvider';
+import { ThemeContext } from '../../Provider/ThemeProvider';
+import { FaMoon, FaSun } from 'react-icons/fa';
+import './Navbar.css'
 const Navbar = () => {
     const {user, logOut} = useContext(AuthContext)
+    const { darkTheme, toggleTheme } = useContext(ThemeContext);
     const handleLogout = () => {
         logOut()
           .then(() => {})
           .catch(() => {})
     }
+    const contentClass = darkTheme ? 'dark-content' : 'light-content';
+    const toggleIcon = darkTheme ? <FaMoon></FaMoon> : <FaSun></FaSun>;
     return (
-        <div className='container'>
-            <nav className="navbar navbar-expand-lg bg-body-tertiary">
-                <div className="container-fluid">
+        <div className=''>
+            <nav className={`navbar ${contentClass} navbar-expand-lg`}>
+                <div className="container">
                     <a className="navbar-brand" href="#">Sporty Zone</a>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
@@ -21,20 +27,23 @@ const Navbar = () => {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav mx-auto mb-2 mb-lg-0">
                             <li className="nav-item">
-                              <Link className="nav-link active me-3" to='/'>Home</Link>
+                              <Link className="nav-link me-3 a" to='/'>Home</Link>
                             </li>
                             <li className="nav-item">
-                              <Link className="nav-link active me-3" to='/'>Instructors</Link>
+                              <Link className="nav-link me-3 a" to='/'>Instructors</Link>
                             </li>
                             <li className="nav-item">
-                              <Link className="nav-link active me-3" to='/'>Classes</Link>
+                              <Link className="nav-link me-3 a" to='/'>Classes</Link>
                             </li>
                             {user ? 
                                 <li className="nav-item">
-                                <Link className="nav-link active me-3" to='/'>Dashboard</Link>
+                                <Link className="nav-link me-3 a" to='/'>Dashboard</Link>
                                 </li>: <></>
                             }
                         </ul>
+                        <button onClick={toggleTheme} className="btn themeBtn me-1">
+                            <span>{toggleIcon}</span>
+                        </button>
                         <div>
                                 {
                                     user ? <button onClick={handleLogout}  className='random-btn btn me-3 btn-danger '>Log Out</button>

@@ -1,0 +1,34 @@
+.main-content {
+    padding: 2rem;
+    transition: background-color 0.3s ease; 
+}
+
+.light-content {
+    background-color: #fff;
+    color: black;
+}
+.light-content ul li .a{
+    color: black;
+}
+  
+.dark-content {
+    background-color: #121212;
+    color: #fff;
+}
+  
+.dark-content ul li .a{
+    color: #fff;
+}
+
+.dark-content a{
+    color: #fff;
+}
+.dark-content .themeBtn{
+    color: #fff;
+}
+.themeBtn{
+    border: none;
+}
+.themeBtn span{
+    font-size: 25px;
+}
