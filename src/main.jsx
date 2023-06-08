@@ -16,6 +16,9 @@ import {
 } from '@tanstack/react-query'
 import { ThemeProvider } from './Provider/ThemeProvider';
 import Instructors from './Pages/Instructors/Instructors';
+import Classes from './Pages/Home/Classes/Classes';
+import DashBoard from './Layout/DashBoard';
+import MySelectedClass from './Pages/DashBoard/StudentDashboard/MySelectedClass';
 
 const router = createBrowserRouter([
   {
@@ -37,7 +40,21 @@ const router = createBrowserRouter([
       {
         path: "/instructors",
         element: <Instructors></Instructors>
+      },
+      {
+        path: "/classes",
+        element: <Classes></Classes>
       }
+    ]
+  },
+  {
+    path: "/dashboard",
+    element: <DashBoard></DashBoard>,
+    children: [
+      {
+        path: 'selectedClass',
+        element: <MySelectedClass></MySelectedClass>
+      },
     ]
   }
 ]);

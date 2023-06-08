@@ -1,0 +1,21 @@
+ li {
+    list-style: none;
+}
+li .link{
+    margin-top: 18px;
+    padding: 15px;
+    color: white;
+}
+.link:hover{
+    background-color: rgba(231, 231, 231, 1);
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.bg{
+    background: crimson; 
+    background: -webkit-linear-gradient(to right,  crimson, orange);
+    background: linear-gradient(to right,  crimson, orange);
+    padding: 50px;
+    border-radius: 5px;
+}

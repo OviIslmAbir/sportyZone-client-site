@@ -33,11 +33,11 @@ const Navbar = () => {
                               <Link className="nav-link me-3 a" to='/instructors'>Instructors</Link>
                             </li>
                             <li className="nav-item">
-                              <Link className="nav-link me-3 a" to='/'>Classes</Link>
+                              <Link className="nav-link me-3 a" to='/classes'>Classes</Link>
                             </li>
                             {user ? 
                                 <li className="nav-item">
-                                <Link className="nav-link me-3 a" to='/'>Dashboard</Link>
+                                <Link className="nav-link me-3 a" to='/dashboard'>Dashboard</Link>
                                 </li>: <></>
                             }
                         </ul>
