@@ -15,6 +15,7 @@ import {
   QueryClientProvider,
 } from '@tanstack/react-query'
 import { ThemeProvider } from './Provider/ThemeProvider';
+import Instructors from './Pages/Instructors/Instructors';
 
 const router = createBrowserRouter([
   {
@@ -34,8 +35,8 @@ const router = createBrowserRouter([
         element: <Register></Register>
       },
       {
-        path: "/",
-        element: <Home></Home>
+        path: "/instructors",
+        element: <Instructors></Instructors>
       }
     ]
   }

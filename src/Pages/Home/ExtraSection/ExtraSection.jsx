@@ -26,8 +26,8 @@ const ExtraSection = () => {
                 >
                     {
                         reviews.map(review =>
-                            <SwiperSlide>
-                                <div className="text-center" key={review.id}>
+                            <SwiperSlide  key={review.id}>
+                                <div className="text-center">
                                     <img style={{width:"80px", height: "80px", borderRadius:"50%"}} src={review.image} alt="" className="mb-3" />
                                     <h4>{review.student_name}</h4>
                                     <p className="text-left">{review.comment}</p>
