@@ -5,13 +5,16 @@ import phone from "../../assets/phone.json";
 import { FaEnvelope, FaKey } from 'react-icons/fa';
 import '../../Common/Style/Style.css'
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import {BsFillEyeFill, BsFillEyeSlashFill } from 'react-icons/bs';
 import { AuthContext } from '../../Provider/AuthProvider';
 import Swal from 'sweetalert2'
 const Login = () => {
     useTitle("Login")
     const {login, user} = useContext(AuthContext)
+    const location = useLocation()
+    const navigate = useNavigate()
+    const from = location.state?.from?.pathname || '/'
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => {
         login(data.email, data.password)
@@ -25,8 +28,9 @@ const Login = () => {
                 },
                 hideClass: {
                     popup: 'animate__animated animate__fadeOutUp'
-                }
+                }    
             });
+            navigate(from)
           })
           .catch(error => {
             console.log(error.message)

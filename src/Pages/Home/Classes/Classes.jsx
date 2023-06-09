@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import '../../../Common/Style/Style.css'
-import { AuthContext } from '../../../Provider/AuthProvider';
 import SingleClass from './SingleClass';
+import useTitle from '../../../Hooks/useTitle';
 const Classes = () => {
-    const {user} = useContext(AuthContext)
+    useTitle("Classes")
     const {data: classes = [] } = useQuery({
         queryKey: ['classes'],
         queryFn: async () => {

@@ -9,7 +9,7 @@ const SingleClass = (props) => {
     const [, refetch] = useSelectedClasses()
     const handleAddClass = () => {
         if(user && user.email){  
-            const selectedClasses = { name, image, price, email: user.email}
+            const selectedClasses = { name, image, price, email: user?.email, userName: user?.displayName}
             fetch('http://localhost:5000/selectedClasses', {
                 method: "POST",
                 headers: {

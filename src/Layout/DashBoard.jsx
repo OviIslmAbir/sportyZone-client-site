@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Navbar from '../Common/Navbar/Navbar';
 import { Link, Outlet } from 'react-router-dom';
 import Footer from '../Common/Footer/Footer';
 import './DashBoard.css'
+
 
 const DashBoard = () => {
     return (
@@ -17,7 +18,7 @@ const DashBoard = () => {
                             <Link to='' className='nav-link link'>My Enrolled Classes</Link>
                         </li>
                         <li>
-                            <Link to='' className='nav-link link'>Payment</Link>
+                            <Link to='/dashboard/payment' className='nav-link link'>Payment</Link>
                         </li>
                         <li>
                             <Link to='' className='nav-link link'>Payment history</Link>
