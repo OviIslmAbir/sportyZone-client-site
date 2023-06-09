@@ -24,11 +24,15 @@ import PrivateRoute from './Routes/PrivateRoute';
 import DashHome from './Pages/DashBoard/DashHome';
 import PaymentHistory from './Pages/DashBoard/StudentDashboard/PaymentHistory';
 import MyEnrolledClass from './Pages/DashBoard/StudentDashboard/MyEnrolledClass';
+import ErrorPage from './Pages/ErrorPage/ErrorPage';
+import ManageUsers from './Pages/DashBoard/AdminDashBoard/ManageUsers';
+import ManageClasses from './Pages/DashBoard/AdminDashBoard/ManageClasses';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+    // errorElement: <ErrorPage/>, 
     children: [
       {
         path: "/",
@@ -55,11 +59,13 @@ const router = createBrowserRouter([
   {
     path: "/dashboard",
     element: <DashBoard></DashBoard>,
+    // errorElement: <ErrorPage/>, 
     children: [
       {
         path: '/dashboard',
         element: <PrivateRoute><DashHome></DashHome></PrivateRoute>
       },
+      // student dashboard
       {
         path: 'selectedClass',
         element: <PrivateRoute><MySelectedClass></MySelectedClass></PrivateRoute>
@@ -75,6 +81,15 @@ const router = createBrowserRouter([
       {
         path: 'paymentHistory',
         element: <PrivateRoute><PaymentHistory></PaymentHistory></PrivateRoute>
+      },
+       // admin dashboard
+      {
+        path: 'allUsers',
+        element: <ManageUsers></ManageUsers>
+      },
+      {
+        path: 'manageClasses',
+        element: <ManageClasses></ManageClasses>
       },
     ]
   }

@@ -3,23 +3,41 @@ import Navbar from '../Common/Navbar/Navbar';
 import { Link, Outlet } from 'react-router-dom';
 import Footer from '../Common/Footer/Footer';
 import './DashBoard.css'
-
+import {FaUsers, FaWallet} from 'react-icons/fa';
+import {MdImportContacts} from 'react-icons/md';
+import {BiBookmarkHeart} from 'react-icons/bi';
 
 const DashBoard = () => {
+    const admin = true
+    const instructor = true
     return (
         <div>
             <Navbar></Navbar>
            <div className='d-flex container mt-4'>
                 <div className='bg h-full'>
-                        <li>
-                            <Link to='/dashboard/selectedClass' className='nav-link link'>My Selected Classes</Link>
-                        </li>
-                        <li>
-                            <Link to='/dashboard/enrollClass' className='nav-link link'>My Enrolled Classes</Link>
-                        </li>
-                        <li>
-                            <Link to='/dashboard/paymentHistory' className='nav-link link'>Payment history</Link>
-                        </li>
+                        {
+                            admin ? <>
+                                <li>
+                                    <Link to='/dashboard/allUsers' className='nav-link link'><FaUsers style={{fontSize:"20px"}}/> Manage Users</Link>
+                                </li>
+                                <li>
+                                    <Link to='/dashboard/manageClasses' className='nav-link link'><MdImportContacts style={{fontSize:"20px"}}/> Manage Classes</Link>
+                                </li>
+                            </> :
+                            <>
+                                <li>
+                                    <Link to='/dashboard/selectedClass' className='nav-link link'><MdImportContacts style={{fontSize:"20px"}}/>  My Selected Classes</Link>
+                                </li>
+                                <li>
+                                    <Link to='/dashboard/enrollClass' className='nav-link link'><BiBookmarkHeart style={{fontSize:"20px"}}/> My Enrolled Classes</Link>
+                                </li>
+                                <li>
+                                    <Link to='/dashboard/paymentHistory' className='nav-link link'><FaWallet style={{fontSize:"20px"}}/> Payment history</Link>
+                                </li>
+                             </>
+
+
+                        }
                 </div>
                 <div style={{flex: 1, padding:"20px"}}>
                    <Outlet></Outlet>

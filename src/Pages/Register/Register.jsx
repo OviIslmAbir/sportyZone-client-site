@@ -6,13 +6,16 @@ import { FaEnvelope, FaKey, FaUser, FaImage } from 'react-icons/fa';
 import {BsFillEyeFill, BsFillEyeSlashFill } from 'react-icons/bs';
 import '../../Common/Style/Style.css'
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Provider/AuthProvider';
+import SocialLogin from '../../Common/SocialLogin/SocialLogin';
+import Swal from 'sweetalert2'
 const Register = () => {
     useTitle("Register")
     const {createUser, user, updateUserProfile} = useContext(AuthContext)
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [error, setError] = useState('')
+    const navigate = useNavigate()
     const onSubmit = data => {
         if (data.password !== data.confirmPassword) {
             setError('Password and Confirm password do not match.');
@@ -24,7 +27,30 @@ const Register = () => {
             console.log(newUser);
 
             updateUserProfile(data.name, data.photo)
-               .then(() => {})
+               .then(() => {
+                    const saveUser = {name: data.name, email: data.email}
+                    fetch('http://localhost:5000/users', {
+                        method: "POST",
+                        headers: {
+                            'content-type' : 'application/json'
+                        },
+                        body : JSON.stringify(saveUser)
+                       })
+                        .then(res => res.json())
+                        .then(data => {
+                                if(data.insertedId){
+                                    Swal.fire({
+                                        icon: 'success',
+                                        title: 'User created successfully.',
+                                        showConfirmButton: false,
+                                        timer: 1500
+                                    });
+                                    navigate('/');
+                                }
+                            })
+
+                    .catch(error => console.log(error))
+               })
         })
         .catch(error => {
             console.log(error.message)
@@ -99,6 +125,8 @@ const Register = () => {
                         </div>
                         <p className='mt-4 text-center'>Already have an account? <Link style={{textDecoration: "none"}} to='/login' className='text-danger '>Login</Link></p>
                     </form>
+                    <hr />
+                    <SocialLogin></SocialLogin>
                 </div>
             </div>
         </div>

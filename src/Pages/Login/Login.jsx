@@ -9,6 +9,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import {BsFillEyeFill, BsFillEyeSlashFill } from 'react-icons/bs';
 import { AuthContext } from '../../Provider/AuthProvider';
 import Swal from 'sweetalert2'
+import SocialLogin from '../../Common/SocialLogin/SocialLogin';
 const Login = () => {
     useTitle("Login")
     const {login, user} = useContext(AuthContext)
@@ -71,6 +72,8 @@ const Login = () => {
                         </div>
                         <p className='mt-4 text-center'>Don't Have An Account ? <Link style={{textDecoration: "none"}} to='/register' className='text-danger '>Register</Link></p>
                     </form>
+                    <hr />
+                    <SocialLogin></SocialLogin>
                 </div>
             </div>
         </div>

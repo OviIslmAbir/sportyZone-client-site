@@ -7,7 +7,7 @@ import useTitle from '../../../Hooks/useTitle';
 
 const Payment = () => {
     useTitle("Payment")
-    const stripePromise = loadStripe('pk_test_51NEXDnIqNFkYGFdQ7N2FBbDMNTbmSN7zgptFGyZ8f3PN4FpHih7N9csrtHFziHlFdEuxlPJGNhWsJtLMLscP1rAX00Ajp9XryX')
+    const stripePromise = loadStripe(import.meta.env.VITE_PaymentPk)
 
     
     return (
