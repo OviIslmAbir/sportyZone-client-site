@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../../Provider/AuthProvider';
 import useTitle from '../../../Hooks/useTitle';
-
+import { Fade } from "react-awesome-reveal";
 const PaymentHistory = () => {
     useTitle('Payment history')
     const [history, setHistory] = useState([])
@@ -14,7 +14,7 @@ const PaymentHistory = () => {
     console.log(history)
     return (
         <div>
-            <h2 className='text-center'>Payment History</h2>
+            <Fade><h2 className='text-center'>Payment History</h2></Fade>
             <table className="table mt-4">
                 <thead>
                     <tr>

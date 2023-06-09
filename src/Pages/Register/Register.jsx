@@ -68,7 +68,7 @@ const Register = () => {
                   <Lottie animationData={phone} loop={true} />
                 </div>
                 <div className="col-lg-6 shadow-lg p-5">
-                    <h2 className='my-3 text-center'>Please Register</h2>
+                   <h2 className='my-3 text-center'>Please Register</h2>
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <div className="input-group mb-3">
                             <span className="input-group-text"><FaUser/></span>

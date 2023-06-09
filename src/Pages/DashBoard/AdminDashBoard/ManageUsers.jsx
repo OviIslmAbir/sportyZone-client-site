@@ -3,6 +3,8 @@ import useTitle from '../../../Hooks/useTitle';
 import { FaUserShield } from "react-icons/fa";
 import { GiTeacher } from "react-icons/gi";
 import { useQuery } from '@tanstack/react-query';
+import { Fade } from "react-awesome-reveal";
+import Swal from "sweetalert2";
 const ManageUsers = () => {
     useTitle('Manage users')
     const { data: users = [], refetch } = useQuery(['users'], async () => {
@@ -10,9 +12,29 @@ const ManageUsers = () => {
         const data = await res.json()
         return data;
     })
+    const handleMakeAdmin = user => {
+        fetch(`http://localhost:5000/users/admin/${user._id}`, {
+            method: 'PATCH'
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+            if(data.modifiedCount){
+                refetch();
+                Swal.fire({
+                    icon: 'success',
+                    title: `${user.name} is an Admin Now!`,
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
+            }
+        })
+    }
     return (
         <div>
-            <h2>Manage Users</h2>
+            <Fade>
+               <h2 className='text-center mb-3'>Manage Users</h2>
+            </Fade>
              <table className="table">
                 <thead>
                     <tr>
@@ -30,7 +52,7 @@ const ManageUsers = () => {
                             <th scope="row">{index + 1}</th>
                             <td>{user.name}</td>
                             <td>{user.email}</td>
-                            <td><button onClick={{}} className='btn btn-warning'><FaUserShield></FaUserShield></button></td>
+                            <td>{user.role === 'admin' ? 'Admin' : <button onClick={() => handleMakeAdmin(user)} className='btn btn-warning'><FaUserShield></FaUserShield></button>}</td>
                             <td><button onClick={{}} className='btn btn-dark'><GiTeacher></GiTeacher></button></td>
                         </tr>)
                     }

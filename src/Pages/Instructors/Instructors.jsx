@@ -1,6 +1,7 @@
 import React from 'react';
 import { useQuery } from '@tanstack/react-query';
 import useTitle from '../../Hooks/useTitle';
+import { Fade } from "react-awesome-reveal";
 const Instructors = () => {
     useTitle("Instructors")
     const {data: instructors = [] } = useQuery({
@@ -13,7 +14,7 @@ const Instructors = () => {
     })
     return (
         <div className='container mt-5'>
-                <h2 className='text-center mb-4'>Instructors</h2>
+                <Fade><h2 className='text-center mb-4'>Instructors</h2></Fade>
             <div className="row row-cols-1 row-cols-md-3 g-4">
                 {
                     instructors.map(instructor => 
