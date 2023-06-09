@@ -21,6 +21,7 @@ import DashBoard from './Layout/DashBoard';
 import MySelectedClass from './Pages/DashBoard/StudentDashboard/MySelectedClass';
 import Payment from './Pages/DashBoard/StudentDashboard/Payment';
 import PrivateRoute from './Routes/PrivateRoute';
+import DashHome from './Pages/DashBoard/DashHome';
 
 const router = createBrowserRouter([
   {
@@ -53,6 +54,10 @@ const router = createBrowserRouter([
     path: "/dashboard",
     element: <DashBoard></DashBoard>,
     children: [
+      {
+        path: '/dashboard',
+        element: <PrivateRoute><DashHome></DashHome></PrivateRoute>
+      },
       {
         path: 'selectedClass',
         element: <PrivateRoute><MySelectedClass></MySelectedClass></PrivateRoute>
