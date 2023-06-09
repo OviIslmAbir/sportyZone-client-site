@@ -15,7 +15,7 @@ const DashBoard = () => {
                             <Link to='/dashboard/selectedClass' className='nav-link link'>My Selected Classes</Link>
                         </li>
                         <li>
-                            <Link to='' className='nav-link link'>My Enrolled Classes</Link>
+                            <Link to='/dashboard/enrollClass' className='nav-link link'>My Enrolled Classes</Link>
                         </li>
                         <li>
                             <Link to='/dashboard/paymentHistory' className='nav-link link'>Payment history</Link>

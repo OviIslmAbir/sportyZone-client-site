@@ -6,6 +6,7 @@ import { AuthContext } from '../Provider/AuthProvider';
 import useSelectedClasses from '../Hooks/useSelectedClasses';
 import Swal from 'sweetalert2'
 import moment from 'moment';
+import { useNavigate } from 'react-router-dom';
 const PaymentCheckOutForm = () => {
     const stripe = useStripe()
     const elements = useElements()
@@ -18,6 +19,7 @@ const PaymentCheckOutForm = () => {
     const total = selectedClasses.reduce((sum, item) => item.price + sum, 0);
     const price = parseFloat(total.toFixed(2))
 
+    const navigate = useNavigate()
     useEffect(() => {
         axios.post('http://localhost:5000/create-payment-intent', {price})
           .then(res => {
@@ -87,6 +89,14 @@ const PaymentCheckOutForm = () => {
                         }    
                     });
                 }
+                navigate('/classes')
+                const enrolledItem = {
+                  selectedClasses: selectedClasses.map(selectedClass =>  selectedClass._id),
+                  className: selectedClasses.map(selectedClass =>  selectedClass.name),
+                  email: user?.email
+                }
+                axios.post(`http://localhost:5000/enrolled?email=${user?.email}`, enrolledItem)
+
             })
           }
     }

@@ -10,6 +10,7 @@ const MySelectedClass = () => {
     useTitle('My selected class')
     const [selectedClasses, refetch] = useSelectedClasses()
     const total = selectedClasses.reduce((sum, item) => item.price + sum, 0);
+    const name = selectedClasses.map(selectedClass => selectedClass.name)
     const handleDelete = selectedClass => {
         Swal.fire({
             title: 'Are you sure?',
@@ -34,6 +35,7 @@ const MySelectedClass = () => {
                                 'success'
                             )
                         }
+                        localStorage.removeItem(`buttonDisabled_${name}`)
                     })
             }
         })

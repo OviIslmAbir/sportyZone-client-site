@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../../Provider/AuthProvider';
 import Swal from "sweetalert2";
 import useSelectedClasses from '../../../Hooks/useSelectedClasses';
@@ -6,7 +6,9 @@ const SingleClass = (props) => {
     const {user} = useContext(AuthContext)
     const {image, name, instructorName, availableSeats, price} = props.singleClass
     const [buttonDisabled, setButtonDisabled] = useState(false);
+
     const [, refetch] = useSelectedClasses()
+
     const handleAddClass = () => {
         if(user && user.email){  
             const selectedClasses = { name, image, price, email: user?.email, userName: user?.displayName}
@@ -28,10 +30,18 @@ const SingleClass = (props) => {
                             timer: 1500
                           })
                           setButtonDisabled(true);
+                          localStorage.setItem(`buttonDisabled_${name}`, 'true');
                     }
             })
         }
     }
+    useEffect(() => {
+        const isButtonDisabled = localStorage.getItem(`buttonDisabled_${name}`);
+        if (isButtonDisabled === 'true') {
+          setButtonDisabled(true);
+        }
+      }, [name]);;
+    
     
     return (
                 <div className="col">
