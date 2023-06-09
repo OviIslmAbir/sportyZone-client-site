@@ -1,8 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../../Provider/AuthProvider';
 import axios from 'axios';
+import useTitle from '../../../Hooks/useTitle';
 
 const MyEnrolledClass = () => {
+    useTitle("My enrolled class")
     const [enrolledClass, setEnrolledClass] = useState([])
     const{user} = useContext(AuthContext)
     useEffect(() => {

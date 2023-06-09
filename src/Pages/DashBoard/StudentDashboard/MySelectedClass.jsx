@@ -47,7 +47,7 @@ const MySelectedClass = () => {
                 <h4>Total Price: ${total}</h4>
                 <Link to='/dashboard/payment'><button className='btn random-btn text-white'>Pay</button></Link>
             </div>
-            <table class="table">
+            <table className="table">
                 <thead>
                     <tr>
                     <th scope="col">#</th>
@@ -60,7 +60,7 @@ const MySelectedClass = () => {
                 <tbody>
                     {
                         selectedClasses.map((selectedClass, index) => 
-                        <tr>
+                        <tr key={selectedClass._id}>
                             <th scope="row">{index + 1}</th>
                             <td><img className='rounded' style={{width:"50px", height:"50px"}} src={selectedClass.image} alt="" /></td>
                             <td>{selectedClass.name}</td>
