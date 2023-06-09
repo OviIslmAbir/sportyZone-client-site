@@ -18,10 +18,7 @@ const DashBoard = () => {
                             <Link to='' className='nav-link link'>My Enrolled Classes</Link>
                         </li>
                         <li>
-                            <Link to='/dashboard/payment' className='nav-link link'>Payment</Link>
-                        </li>
-                        <li>
-                            <Link to='' className='nav-link link'>Payment history</Link>
+                            <Link to='/dashboard/paymentHistory' className='nav-link link'>Payment history</Link>
                         </li>
                 </div>
                 <div style={{flex: 1, padding:"20px"}}>

@@ -5,6 +5,7 @@ import axios from 'axios';
 import { AuthContext } from '../Provider/AuthProvider';
 import useSelectedClasses from '../Hooks/useSelectedClasses';
 import Swal from 'sweetalert2'
+import moment from 'moment';
 const PaymentCheckOutForm = () => {
     const stripe = useStripe()
     const elements = useElements()
@@ -68,14 +69,14 @@ const PaymentCheckOutForm = () => {
                 email: user?.email,
                 transactionId: paymentIntent.id,
                 price,
-                data : new Date,
+                date : moment().format('MMMM Do YYYY, h:mm:ss a'),
                 quantity: selectedClasses.length,
                 selectedClasses: selectedClasses.map(selectedClass =>  selectedClass._id),
                 className: selectedClasses.map(selectedClass =>  selectedClass.name)
             }
             axios.post('http://localhost:5000/payments', payment)
             .then(res => {
-                if(res.data.insertedId){
+                if(res.data.result.insertedId){
                     Swal.fire({
                         title: 'Payment Successfully.',
                         showClass: {

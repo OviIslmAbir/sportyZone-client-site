@@ -22,6 +22,7 @@ import MySelectedClass from './Pages/DashBoard/StudentDashboard/MySelectedClass'
 import Payment from './Pages/DashBoard/StudentDashboard/Payment';
 import PrivateRoute from './Routes/PrivateRoute';
 import DashHome from './Pages/DashBoard/DashHome';
+import PaymentHistory from './Pages/DashBoard/StudentDashboard/PaymentHistory';
 
 const router = createBrowserRouter([
   {
@@ -65,6 +66,10 @@ const router = createBrowserRouter([
       {
         path: 'payment',
         element: <PrivateRoute><Payment></Payment></PrivateRoute>
+      },
+      {
+        path: 'paymentHistory',
+        element: <PrivateRoute><PaymentHistory></PaymentHistory></PrivateRoute>
       },
     ]
   }
