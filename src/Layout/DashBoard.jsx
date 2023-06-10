@@ -5,7 +5,7 @@ import Footer from '../Common/Footer/Footer';
 import './DashBoard.css'
 import {FaUsers, FaWallet} from 'react-icons/fa';
 import {MdImportContacts} from 'react-icons/md';
-import {BiBookmarkHeart} from 'react-icons/bi';
+import {BiBookmarkHeart, BiBookAdd} from 'react-icons/bi';
 import useAdmin from '../Hooks/useAdmin';
 import useInstructor from '../Hooks/useInstructor';
 
@@ -27,7 +27,14 @@ const DashBoard = () => {
                                 </li>
                             </> :
                             <>
-                                { isInstructor ? <></>:
+                                { isInstructor ? <>
+                                    <li>
+                                        <Link to='/dashboard/addAClass' className='nav-link link'><BiBookAdd style={{fontSize:"20px"}}/> Add A Class</Link>
+                                    </li>
+                                    <li>
+                                        <Link to='/dashboard/myClasses' className='nav-link link'><MdImportContacts style={{fontSize:"20px"}}/> My Classes</Link>
+                                    </li>
+                                </>:
                                 <>
                                 <li>
                                     <Link to='/dashboard/selectedClass' className='nav-link link'><MdImportContacts style={{fontSize:"20px"}}/>  My Selected Classes</Link>

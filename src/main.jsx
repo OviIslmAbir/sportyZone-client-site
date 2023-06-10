@@ -28,6 +28,9 @@ import ErrorPage from './Pages/ErrorPage/ErrorPage';
 import ManageUsers from './Pages/DashBoard/AdminDashBoard/ManageUsers';
 import ManageClasses from './Pages/DashBoard/AdminDashBoard/ManageClasses';
 import AdminRoute from './Routes/AdminRoute';
+import AddAClass from './Pages/DashBoard/InstructorDashBoard/AddAClass';
+import MyClasses from './Pages/DashBoard/InstructorDashBoard/MyClasses';
+import InstructorRoute from './Routes/InstructorRoute';
 
 const router = createBrowserRouter([
   {
@@ -60,7 +63,7 @@ const router = createBrowserRouter([
   {
     path: "/dashboard",
     element: <DashBoard></DashBoard>,
-    errorElement: <ErrorPage/>, 
+    // errorElement: <ErrorPage/>, 
     children: [
       {
         path: '/dashboard',
@@ -91,6 +94,15 @@ const router = createBrowserRouter([
       {
         path: 'manageClasses',
         element: <AdminRoute><ManageClasses></ManageClasses></AdminRoute>
+      },
+       // instructor dashboard
+      {
+        path: 'addAClass',
+        element: <InstructorRoute><AddAClass></AddAClass></InstructorRoute>
+      },
+      {
+        path: 'myClasses',
+        element: <InstructorRoute><MyClasses></MyClasses></InstructorRoute>
       },
     ]
   }
