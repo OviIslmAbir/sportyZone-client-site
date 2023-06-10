@@ -27,6 +27,7 @@ import MyEnrolledClass from './Pages/DashBoard/StudentDashboard/MyEnrolledClass'
 import ErrorPage from './Pages/ErrorPage/ErrorPage';
 import ManageUsers from './Pages/DashBoard/AdminDashBoard/ManageUsers';
 import ManageClasses from './Pages/DashBoard/AdminDashBoard/ManageClasses';
+import AdminRoute from './Routes/AdminRoute';
 
 const router = createBrowserRouter([
   {
@@ -59,7 +60,7 @@ const router = createBrowserRouter([
   {
     path: "/dashboard",
     element: <DashBoard></DashBoard>,
-    // errorElement: <ErrorPage/>, 
+    errorElement: <ErrorPage/>, 
     children: [
       {
         path: '/dashboard',
@@ -85,11 +86,11 @@ const router = createBrowserRouter([
        // admin dashboard
       {
         path: 'allUsers',
-        element: <ManageUsers></ManageUsers>
+        element: <AdminRoute><ManageUsers></ManageUsers></AdminRoute>
       },
       {
         path: 'manageClasses',
-        element: <ManageClasses></ManageClasses>
+        element: <AdminRoute><ManageClasses></ManageClasses></AdminRoute>
       },
     ]
   }

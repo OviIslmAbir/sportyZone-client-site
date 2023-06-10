@@ -30,6 +30,24 @@ const ManageUsers = () => {
             }
         })
     }
+    const handleMakeInstructor = user => {
+        fetch(`http://localhost:5000/users/instructor/${user._id}`, {
+            method: 'PATCH'
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+            if(data.modifiedCount){
+                refetch();
+                Swal.fire({
+                    icon: 'success',
+                    title: `${user.name} is an Instructor Now!`,
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
+            }
+        })
+    }
     return (
         <div>
             <Fade>
@@ -53,7 +71,7 @@ const ManageUsers = () => {
                             <td>{user.name}</td>
                             <td>{user.email}</td>
                             <td>{user.role === 'admin' ? 'Admin' : <button onClick={() => handleMakeAdmin(user)} className='btn btn-warning'><FaUserShield></FaUserShield></button>}</td>
-                            <td><button onClick={{}} className='btn btn-dark'><GiTeacher></GiTeacher></button></td>
+                            <td>{user.role === 'instructor' ? "Instructor" : <button onClick={() => handleMakeInstructor(user)} className='btn btn-dark'><GiTeacher></GiTeacher></button>}</td>
                         </tr>)
                     }
                 </tbody>

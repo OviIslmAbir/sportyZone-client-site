@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../../Provider/AuthProvider';
 import axios from 'axios';
 import useTitle from '../../../Hooks/useTitle';
+import { Fade } from "react-awesome-reveal";
 const MyEnrolledClass = () => {
     useTitle("My enrolled class")
     const [enrolledClass, setEnrolledClass] = useState([])

@@ -6,17 +6,19 @@ import './DashBoard.css'
 import {FaUsers, FaWallet} from 'react-icons/fa';
 import {MdImportContacts} from 'react-icons/md';
 import {BiBookmarkHeart} from 'react-icons/bi';
+import useAdmin from '../Hooks/useAdmin';
+import useInstructor from '../Hooks/useInstructor';
 
 const DashBoard = () => {
-    const admin = true
-    const instructor = true
+    const [isAdmin] = useAdmin()
+    const [isInstructor] = useInstructor()
     return (
         <div>
             <Navbar></Navbar>
            <div className='d-flex container mt-4'>
                 <div className='bg h-full'>
                         {
-                            admin ? <>
+                            isAdmin ? <>
                                 <li>
                                     <Link to='/dashboard/allUsers' className='nav-link link'><FaUsers style={{fontSize:"20px"}}/> Manage Users</Link>
                                 </li>
@@ -25,6 +27,8 @@ const DashBoard = () => {
                                 </li>
                             </> :
                             <>
+                                { isInstructor ? <></>:
+                                <>
                                 <li>
                                     <Link to='/dashboard/selectedClass' className='nav-link link'><MdImportContacts style={{fontSize:"20px"}}/>  My Selected Classes</Link>
                                 </li>
@@ -34,9 +38,9 @@ const DashBoard = () => {
                                 <li>
                                     <Link to='/dashboard/paymentHistory' className='nav-link link'><FaWallet style={{fontSize:"20px"}}/> Payment history</Link>
                                 </li>
-                             </>
-
-
+                               </>}
+                            </>
+                            
                         }
                 </div>
                 <div style={{flex: 1, padding:"20px"}}>
