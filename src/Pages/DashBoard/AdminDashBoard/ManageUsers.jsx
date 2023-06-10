@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import useTitle from '../../../Hooks/useTitle';
 import { FaUserShield } from "react-icons/fa";
 import { GiTeacher } from "react-icons/gi";
 import { useQuery } from '@tanstack/react-query';
 import { Fade } from "react-awesome-reveal";
 import Swal from "sweetalert2";
+import axios from 'axios';
+import { AuthContext } from '../../../Provider/AuthProvider';
 const ManageUsers = () => {
     useTitle('Manage users')
     const { data: users = [], refetch } = useQuery(['users'], async () => {
@@ -12,6 +14,7 @@ const ManageUsers = () => {
         const data = await res.json()
         return data;
     })
+    const {user} = useContext(AuthContext)
     const handleMakeAdmin = user => {
         fetch(`http://localhost:5000/users/admin/${user._id}`, {
             method: 'PATCH'
@@ -47,6 +50,13 @@ const ManageUsers = () => {
                   })
             }
         })
+        const instructor = {
+            instructorName: user?.name,
+            email: user?.email,
+            image : user?.image
+        }
+        axios.post('http://localhost:5000/instructors', instructor)
+          .then(res => {})
     }
     return (
         <div>

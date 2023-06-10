@@ -2,12 +2,16 @@ import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../../Provider/AuthProvider';
 import Swal from "sweetalert2";
 import useSelectedClasses from '../../../Hooks/useSelectedClasses';
+import useAdmin from '../../../Hooks/useAdmin';
+import useInstructor from '../../../Hooks/useInstructor';
 const SingleClass = (props) => {
     const {user} = useContext(AuthContext)
     const {image, name, instructorName, availableSeats, price} = props.singleClass
     const [buttonDisabled, setButtonDisabled] = useState(false);
 
     const [, refetch] = useSelectedClasses()
+    const [isAdmin] = useAdmin()
+    const [isInstructor] = useInstructor()
 
     const handleAddClass = () => {
         if(user && user.email){  
@@ -55,7 +59,7 @@ const SingleClass = (props) => {
                                 <p className="card-text">Price: ${price}</p>
                             </div>
                             <div className='text-end'>
-                                <button onClick={handleAddClass} disabled={(user ? false : true) || (buttonDisabled)} className='random-btn btn text-white'>Add Class</button>
+                                <button onClick={handleAddClass} disabled={(user ? false : true) || (buttonDisabled) || (isAdmin) || (isInstructor)} className='random-btn btn text-white'>Add Class</button>
                             </div>
                         </div>
                     </div>

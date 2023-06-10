@@ -43,10 +43,6 @@ const MySelectedClass = () => {
     return (
         <div>
             <Fade><h2 className='text-center mb-4'>My Selected Classes</h2></Fade>
-            <div className='d-flex justify-content-around my-3'>
-                <h4>Total Price: ${total}</h4>
-                <Link to='/dashboard/payment'><button className='btn random-btn text-white'>Pay</button></Link>
-            </div>
             <table className="table">
                 <thead>
                     <tr>
@@ -55,6 +51,7 @@ const MySelectedClass = () => {
                     <th scope="col">Class Name</th>
                     <th scope="col">Price</th>
                     <th scope="col">Delete</th>
+                    <th scope="col">Pay</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -65,7 +62,8 @@ const MySelectedClass = () => {
                             <td><img className='rounded' style={{width:"50px", height:"50px"}} src={selectedClass.image} alt="" /></td>
                             <td>{selectedClass.name}</td>
                             <td>${selectedClass.price}</td>
-                            <td><button onClick={() => handleDelete(selectedClass)} className='btn btn-outline-danger'><FaTrash></FaTrash></button></td>
+                            <td><button onClick={() => handleDelete(selectedClass)} className='btn btn-outline-danger '><FaTrash></FaTrash></button></td>
+                            <td><Link to={`/dashboard/selectedClasses/${selectedClass._id}`}><button className='btn random-btn text-white'>Pay</button></Link></td>
                         </tr>)
                     }
                 </tbody>

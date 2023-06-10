@@ -7,7 +7,7 @@ const PopularClasses = () => {
         queryFn: async () => {
             const res = await fetch('http://localhost:5000/classes')
             const data = await res.json()
-            return data;
+            return data.slice(0, 6);
         },
     })
     return (

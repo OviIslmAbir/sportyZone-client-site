@@ -79,8 +79,9 @@ const router = createBrowserRouter([
         element: <PrivateRoute><MyEnrolledClass></MyEnrolledClass></PrivateRoute>
       },
       {
-        path: 'payment',
-        element: <PrivateRoute><Payment></Payment></PrivateRoute>
+        path: 'selectedClasses/:id',
+        element: <PrivateRoute><Payment></Payment></PrivateRoute>,
+        loader : ({params}) => fetch(`http://localhost:5000/selectedClasses/${params.id}`)
       },
       {
         path: 'paymentHistory',

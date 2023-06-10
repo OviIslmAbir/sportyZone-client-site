@@ -3,21 +3,19 @@ import '../Common/Style/Style.css'
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import axios from 'axios';
 import { AuthContext } from '../Provider/AuthProvider';
-import useSelectedClasses from '../Hooks/useSelectedClasses';
 import Swal from 'sweetalert2'
 import moment from 'moment';
-import { useNavigate } from 'react-router-dom';
+import { useLoaderData, useNavigate } from 'react-router-dom';
 const PaymentCheckOutForm = () => {
     const stripe = useStripe()
     const elements = useElements()
     const [cardError , setCardError] = useState('')
     const [clientSecret, setClientSecret] = useState("");
     const [processing, setProcessing] = useState(false)
-    const {user} = useContext(AuthContext)
 
-    const [selectedClasses] = useSelectedClasses()
-    const total = selectedClasses.reduce((sum, item) => item.price + sum, 0);
-    const price = parseFloat(total.toFixed(2))
+    const {user} = useContext(AuthContext)
+    const selectedClass = useLoaderData()
+    const price = selectedClass.price
 
     const navigate = useNavigate()
     useEffect(() => {
@@ -72,9 +70,8 @@ const PaymentCheckOutForm = () => {
                 transactionId: paymentIntent.id,
                 price,
                 date : moment().format('MMMM Do YYYY, h:mm:ss a'),
-                quantity: selectedClasses.length,
-                selectedClasses: selectedClasses.map(selectedClass =>  selectedClass._id),
-                className: selectedClasses.map(selectedClass =>  selectedClass.name)
+                selectedClass: selectedClass._id,
+                className: selectedClass.name
             }
             axios.post('http://localhost:5000/payments', payment)
             .then(res => {
@@ -91,12 +88,11 @@ const PaymentCheckOutForm = () => {
                 }
                 navigate('/classes')
                 const enrolledItem = {
-                  selectedClasses: selectedClasses.map(selectedClass =>  selectedClass._id),
-                  className: selectedClasses.map(selectedClass =>  selectedClass.name),
+                  className: selectedClass.name,
+                  image: selectedClass.image,
                   email: user?.email
                 }
                 axios.post(`http://localhost:5000/enrolled?email=${user?.email}`, enrolledItem)
-
             })
           }
     }
