@@ -1,9 +1,10 @@
 import React, { useContext } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import '../../../Common/Style/Style.css'
-import SingleClass from './SingleClass';
 import useTitle from '../../../Hooks/useTitle';
 import { Fade } from "react-awesome-reveal";
+import SingleClass from './SingleClass';
+
 const Classes = () => {
     useTitle("Classes")
     const {data: classes = [] } = useQuery({

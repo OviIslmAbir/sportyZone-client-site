@@ -8,11 +8,9 @@ const SingleClass = (props) => {
     const {user} = useContext(AuthContext)
     const {image, name, instructorName, availableSeats, price} = props.singleClass
     const [buttonDisabled, setButtonDisabled] = useState(false);
-
     const [, refetch] = useSelectedClasses()
     const [isAdmin] = useAdmin()
     const [isInstructor] = useInstructor()
-
     const handleAddClass = () => {
         if(user && user.email){  
             const selectedClasses = { name, image, price, email: user?.email, userName: user?.displayName}
@@ -34,37 +32,56 @@ const SingleClass = (props) => {
                             timer: 1500
                           })
                           setButtonDisabled(true);
-                          localStorage.setItem(`buttonDisabled_${name}`, 'true');
+                          localStorage.setItem(`buttonDisabled_${name}_${user?.email}`, 'true');
                     }
             })
         }
     }
     useEffect(() => {
-        const isButtonDisabled = localStorage.getItem(`buttonDisabled_${name}`);
+        const isButtonDisabled = localStorage.getItem(`buttonDisabled_${name}_${user?.email}`);
         if (isButtonDisabled === 'true') {
           setButtonDisabled(true);
         }
-      }, [name]);;
-    
+      }, [name, user]);
     
     return (
                 <div className="col">
-                        <div style={{border:"none"}} className="card h-100 shadow-lg">
-                        <img src={image} style={{height:"200px"}} className="card-img-top" alt="..."/>
-                        <div className="card-body">
-                            <h5 className="card-title mb-3">{name}</h5>
-                            <div>
-                                <h6 className="card-title mb-3">Instructor Name: {instructorName}</h6>
-                                <p className="card-text mb-2">Available Seats: {availableSeats}</p>
-                                <p className="card-text">Price: ${price}</p>
+                        {
+                            availableSeats === 0 ?<>
+                            <div style={{border:"none"}} className="card h-100 shadow-lg">
+                                <img src={image} style={{height:"200px"}} className="card-img-top" alt="..."/>
+                                <div className="card-body bg-danger text-white">
+                                    <h5 className="card-title mb-3">{name}</h5>
+                                    <div>
+                                        <h6 className="card-title mb-3">Instructor Name: {instructorName}</h6>
+                                        <p className="card-text mb-2">Available Seats: {availableSeats}</p>
+                                        <p className="card-text">Price: ${price}</p>
+                                    </div>
+                                    <div className='text-end'>
+                                        <button onClick={handleAddClass} disabled={(user ? false : true) || (buttonDisabled) || (isAdmin) || (isInstructor) || (availableSeats === 0)} className='random-btn btn text-white'>Add Class</button>
+                                    </div>
+                                </div>
                             </div>
-                            <div className='text-end'>
-                                <button onClick={handleAddClass} disabled={(user ? false : true) || (buttonDisabled) || (isAdmin) || (isInstructor)} className='random-btn btn text-white'>Add Class</button>
+                            </> : 
+                            <>
+                            <div style={{border:"none"}} className="card h-100 shadow-lg">
+                                <img src={image} style={{height:"200px"}} className="card-img-top" alt="..."/>
+                                <div className="card-body">
+                                    <h5 className="card-title mb-3">{name}</h5>
+                                    <div>
+                                        <h6 className="card-title mb-3">Instructor Name: {instructorName}</h6>
+                                        <p className="card-text mb-2">Available Seats: {availableSeats}</p>
+                                        <p className="card-text">Price: ${price}</p>
+                                    </div>
+                                    <div className='text-end'>
+                                        <button onClick={handleAddClass} disabled={(user ? false : true) || (buttonDisabled) || (isAdmin) || (isInstructor)} className='random-btn btn text-white'>Add Class</button>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
+                            </>
+                        }
                 </div>
     );
 };
 
-export default SingleClass;
+export default  SingleClass;

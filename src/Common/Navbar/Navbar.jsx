@@ -11,7 +11,9 @@ const Navbar = () => {
     const { darkTheme, toggleTheme } = useContext(ThemeContext);
     const handleLogout = () => {
         logOut()
-          .then(() => {})
+          .then(() => {
+            
+          })
           .catch(() => {})
     }
     const contentClass = darkTheme ? 'dark-content' : 'light-content';

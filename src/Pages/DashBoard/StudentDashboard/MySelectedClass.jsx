@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import useSelectedClasses from '../../../Hooks/useSelectedClasses';
 import { FaTrash } from 'react-icons/fa';
 import '../../../Common/Style/Style.css'
@@ -6,10 +6,11 @@ import Swal from "sweetalert2";
 import useTitle from '../../../Hooks/useTitle';
 import { Link } from 'react-router-dom';
 import { Fade } from "react-awesome-reveal";
+import { AuthContext } from '../../../Provider/AuthProvider';
 const MySelectedClass = () => {
     useTitle('My selected class')
+    const {user} = useContext(AuthContext)
     const [selectedClasses, refetch] = useSelectedClasses()
-    const total = selectedClasses.reduce((sum, item) => item.price + sum, 0);
     const name = selectedClasses.map(selectedClass => selectedClass.name)
     const handleDelete = selectedClass => {
         Swal.fire({
@@ -35,7 +36,7 @@ const MySelectedClass = () => {
                                 'success'
                             )
                         }
-                        localStorage.removeItem(`buttonDisabled_${name}`)
+                        localStorage.removeItem(`buttonDisabled_${name}_${user?.email}`)
                     })
             }
         })
