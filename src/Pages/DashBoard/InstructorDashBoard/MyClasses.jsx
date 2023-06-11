@@ -3,7 +3,9 @@ import React, { useContext, useEffect, useState } from 'react';
 import '../../../Common/Style/Style.css'
 import { Fade } from "react-awesome-reveal";
 import { AuthContext } from '../../../Provider/AuthProvider';
+import useTitle from '../../../Hooks/useTitle';
 const MyClasses = () => {
+    useTitle("My Classes")
     const[instructorClasses, setInstructorClasses] = useState([])
     const {user} = useContext(AuthContext)
     useEffect(() => {
@@ -28,24 +30,10 @@ const MyClasses = () => {
                                     <p className="card-text">Price: ${instructorClass.price}</p>
                                     <p className="card-text">Total Enroll Student: {instructorClass.totalEnroll}</p>
                                     <p className="card-text">Status: {instructorClass.status}</p>
-                                </div>
-                                <div className='text-end'>
-                                <button type="button" className="btn random-btn text-white" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                    Feedback
-                                </button>
-
-                                    <div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                        <div className="modal-dialog modal-dialog-centered">
-                                            <div className="modal-content">
-                                                <div className="modal-header">
-                                                    <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                </div>
-                                                <div className="modal-body">
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    {
+                                        instructorClass?.feedback?.feedback ?
+                                        <p>Feedback: {instructorClass?.feedback?.feedback}</p> : <></>
+                                    }
                                 </div>
                             </div>
                         </div>

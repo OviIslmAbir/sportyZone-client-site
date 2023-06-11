@@ -7,7 +7,7 @@ import SingleClass from './SingleClass';
 
 const Classes = () => {
     useTitle("Classes")
-    const {data: classes = [] } = useQuery({
+    const {data: classes = [] , refetch} = useQuery({
         queryKey: ['classes'],
         queryFn: async () => {
             const res = await fetch('http://localhost:5000/classes')

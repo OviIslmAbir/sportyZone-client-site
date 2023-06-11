@@ -1,8 +1,12 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Fade } from "react-awesome-reveal";
+import useTitle from '../../../Hooks/useTitle';
+import Swal from 'sweetalert2'
 import '../../../Common/Style/Style.css'
+import { Link } from 'react-router-dom';
 const ManageClasses = () => {
+    useTitle("Manage Classes")
     const [allClasses, setAllClasses] = useState([])
     useEffect(() => {
         axios.get('http://localhost:5000/instructorAllClasses')
@@ -10,6 +14,72 @@ const ManageClasses = () => {
             setAllClasses(res.data)
         )
     }, [])
+
+    const handleApprove = classes => {
+        let status = classes.status 
+        const approvedStatus = (status = 'approved')
+        const updateStatus = {
+            status: approvedStatus
+        }
+        fetch(`http://localhost:5000/instructorAllClasses/${classes._id}`, {
+            method: "PUT",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(updateStatus)
+        })
+        .then(res => res.json())
+          .then(data => {
+             const approvedClass = {
+                name: classes.name,
+                image: classes.image,
+                instructorName: classes.instructorName,
+                availableSeats: classes.availableSeats,
+                price: classes.price
+             } 
+             axios.post('http://localhost:5000/classes', approvedClass)
+                .then(res => {
+                    if(res.data.insertedId){
+                        Swal.fire({
+                            title: 'Class add successfully in classes page',
+                            showClass: {
+                                popup: 'animate__animated animate__fadeInDown'
+                            },
+                            hideClass: {
+                                popup: 'animate__animated animate__fadeOutUp'
+                            }    
+                        });
+                    }
+                })
+
+          })
+        fetch(`http://localhost:5000/instructorClasses/${classes._id}`, {
+            method: "PUT",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(updateStatus)
+        })
+        .then(res => res.json())
+        .then(data => {})
+
+    }
+    const handleDeny = classes => {
+        let status = classes.status 
+        const approvedStatus = (status = 'denied')
+        const updateStatus = {
+            status: approvedStatus
+        }
+        fetch(`http://localhost:5000/instructorClasses/${classes._id}`, {
+            method: "PUT",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(updateStatus)
+        })
+        .then(res => res.json())
+        .then(data => {})
+    }
     return (
         <div>
         <Fade>
@@ -40,15 +110,23 @@ const ManageClasses = () => {
                         <td style={{fontSize:"13px"}}>{classes.instructorName}</td>
                         <td style={{fontSize:"13px"}}>{classes.email}</td>
                         <td style={{fontSize:"13px"}}>{classes.availableSeats}</td>
-                        <td style={{fontSize:"13px"}}>{classes.price}</td>
+                        <td style={{fontSize:"13px"}}>$ {classes.price}</td>
                         <td>
-                           <button className='btn btn-warning'>Approve</button>
+                         {
+                           classes.status === 'approved' ? 
+                           <button disabled onClick={() => handleApprove(classes)} className='btn btn-warning'>Approved</button> : 
+                           <button disabled={ classes.status === 'denied'} onClick={() => handleApprove(classes)} className='btn btn-warning'>Approve</button>
+                         }
                         </td>
                         <td>
-                           <button className='btn btn-danger'>Deny</button>
+                         {
+                           classes.status === 'denied' ? 
+                           <button disabled onClick={() => handleDeny(classes)} className='btn btn-danger'>Denied</button> : 
+                           <button disabled={classes.status === 'approved'} onClick={() => handleDeny(classes)} className='btn btn-danger'>Deny</button>
+                         }
                         </td>
                         <td>
-                           <button className='btn random-btn text-white'>Feedback</button>
+                            <Link to={`/dashboard/feedback/${classes._id}`}><button className='btn random-btn text-white'>Feedback</button></Link>
                         </td>
                     </tr>)
                 }

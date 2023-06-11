@@ -31,6 +31,7 @@ import AdminRoute from './Routes/AdminRoute';
 import AddAClass from './Pages/DashBoard/InstructorDashBoard/AddAClass';
 import MyClasses from './Pages/DashBoard/InstructorDashBoard/MyClasses';
 import InstructorRoute from './Routes/InstructorRoute';
+import Feedback from './Pages/DashBoard/AdminDashBoard/Feedback';
 
 const router = createBrowserRouter([
   {
@@ -95,6 +96,10 @@ const router = createBrowserRouter([
       {
         path: 'manageClasses',
         element: <AdminRoute><ManageClasses></ManageClasses></AdminRoute>
+      },
+      {
+        path: 'feedback/:id',
+        element: <AdminRoute><Feedback></Feedback></AdminRoute>
       },
        // instructor dashboard
       {

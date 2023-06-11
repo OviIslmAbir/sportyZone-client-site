@@ -45,6 +45,7 @@ const AddAClass = () => {
                 });
             }
         })
+        
     }
     return (
         <div>
