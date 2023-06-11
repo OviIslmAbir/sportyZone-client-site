@@ -12,7 +12,7 @@ import SocialLogin from '../../Common/SocialLogin/SocialLogin';
 import Swal from 'sweetalert2'
 const Register = () => {
     useTitle("Register")
-    const {createUser, user, updateUserProfile} = useContext(AuthContext)
+    const {createUser, updateUserProfile} = useContext(AuthContext)
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [error, setError] = useState('')
     const navigate = useNavigate()

@@ -25,11 +25,13 @@ const AddAClass = () => {
           name,
           image,
           instructorName,
-          instructorEmail,
+          email: instructorEmail,
           price: parseFloat(price),
           availableSeats: parseInt(availableSeats),
+          totalEnroll: 0,
+          status: 'pending'
         }
-        axios.post('http://localhost:5000/classes', addClass)
+        axios.post('http://localhost:5000/instructorClasses', addClass)
         .then(res => {
             if(res.data.insertedId){
                 Swal.fire({
@@ -51,40 +53,40 @@ const AddAClass = () => {
             </Fade>
             <form onSubmit={handleClass}  className='row'>
                 <div className='col-lg-6'>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text p-3" id="basic-addon1"><MdImportContacts/></span>
-                        <input type="text" name='className' class="form-control p-3" placeholder="Class Name"/>
+                    <div className="input-group mb-3">
+                        <span className="input-group-text p-3" id="basic-addon1"><MdImportContacts/></span>
+                        <input type="text" name='className' className="form-control p-3" placeholder="Class Name"/>
                     </div>
                 </div>
                 <div className='col-lg-6'>
-                    <div class="input-group mb-3">
+                    <div className="input-group mb-3">
                         <p></p>
-                        <span class="input-group-text p-3" id="basic-addon1"><FaImage/></span>
-                        <input type="url" name='classImage' class="form-control p-3" placeholder="Class Image" />
+                        <span className="input-group-text p-3" id="basic-addon1"><FaImage/></span>
+                        <input type="url" name='classImage' className="form-control p-3" placeholder="Class Image" />
                     </div>
                 </div>
                 <div className='col-lg-6'>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text p-3" id="basic-addon1"><GiTeacher/></span>
-                        <input type="text" class="form-control p-3" defaultValue={user?.displayName} placeholder="Instructor Name" />
+                    <div className="input-group mb-3">
+                        <span className="input-group-text p-3" id="basic-addon1"><GiTeacher/></span>
+                        <input type="text" className="form-control p-3" defaultValue={user?.displayName} placeholder="Instructor Name" />
                     </div>
                 </div>
                 <div className='col-lg-6'>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text p-3" id="basic-addon1"><FaEnvelope/></span>
-                        <input type="email" class="form-control p-3" defaultValue={user?.email} placeholder="Instructor Email"/>
+                    <div className="input-group mb-3">
+                        <span className="input-group-text p-3" id="basic-addon1"><FaEnvelope/></span>
+                        <input type="email" className="form-control p-3" defaultValue={user?.email} placeholder="Instructor Email"/>
                     </div>
                 </div>
                 <div className='col-lg-6'>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text p-3" id="basic-addon1"><BiChair/></span>
-                        <input type="number" name='availableSeats' class="form-control p-3" placeholder="Available seats"/>
+                    <div className="input-group mb-3">
+                        <span className="input-group-text p-3" id="basic-addon1"><BiChair/></span>
+                        <input type="number" name='availableSeats' className="form-control p-3" placeholder="Available seats"/>
                     </div>
                 </div>
                 <div className='col-lg-6'>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text p-3" id="basic-addon1"><BiMoneyWithdraw/></span>
-                        <input name='price' type="number" class="form-control p-3" placeholder="Price"/>
+                    <div className="input-group mb-3">
+                        <span className="input-group-text p-3" id="basic-addon1"><BiMoneyWithdraw/></span>
+                        <input name='price' type="number" className="form-control p-3" placeholder="Price"/>
                     </div>
                 </div>
                 <div className='col-lg-12'>

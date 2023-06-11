@@ -9,6 +9,8 @@ import {BiBookmarkHeart, BiBookAdd} from 'react-icons/bi';
 import useAdmin from '../Hooks/useAdmin';
 import useInstructor from '../Hooks/useInstructor';
 
+
+
 const DashBoard = () => {
     const [isAdmin] = useAdmin()
     const [isInstructor] = useInstructor()
@@ -27,7 +29,7 @@ const DashBoard = () => {
                                 </li>
                             </> :
                             <>
-                                { isInstructor ? <>
+                                { isInstructor  ? <>
                                     <li>
                                         <Link to='/dashboard/addAClass' className='nav-link link'><BiBookAdd style={{fontSize:"20px"}}/> Add A Class</Link>
                                     </li>

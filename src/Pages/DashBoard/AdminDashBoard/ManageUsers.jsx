@@ -6,7 +6,7 @@ import { useQuery } from '@tanstack/react-query';
 import { Fade } from "react-awesome-reveal";
 import Swal from "sweetalert2";
 import axios from 'axios';
-import { AuthContext } from '../../../Provider/AuthProvider';
+
 const ManageUsers = () => {
     useTitle('Manage users')
     const { data: users = [], refetch } = useQuery(['users'], async () => {
@@ -14,7 +14,6 @@ const ManageUsers = () => {
         const data = await res.json()
         return data;
     })
-    const {user} = useContext(AuthContext)
     const handleMakeAdmin = user => {
         fetch(`http://localhost:5000/users/admin/${user._id}`, {
             method: 'PATCH'
@@ -56,7 +55,9 @@ const ManageUsers = () => {
             image : user?.image
         }
         axios.post('http://localhost:5000/instructors', instructor)
-          .then(res => {})
+          .then(res => {
+
+        })
     }
     return (
         <div>
@@ -80,8 +81,17 @@ const ManageUsers = () => {
                             <th scope="row">{index + 1}</th>
                             <td>{user.name}</td>
                             <td>{user.email}</td>
-                            <td>{user.role === 'admin' ? 'Admin' : <button onClick={() => handleMakeAdmin(user)} className='btn btn-warning'><FaUserShield></FaUserShield></button>}</td>
-                            <td>{user.role === 'instructor' ? "Instructor" : <button onClick={() => handleMakeInstructor(user)} className='btn btn-dark'><GiTeacher></GiTeacher></button>}</td>
+                            <td>
+                                {user.role === 'admin' ? 
+                                <button disabled onClick={() => handleMakeAdmin(user)} className='btn btn-warning'><FaUserShield></FaUserShield></button> : <button onClick={() => handleMakeAdmin(user)} className='btn btn-warning'><FaUserShield></FaUserShield></button>
+                                }
+                            </td>
+                            <td>
+                                {user.role === 'instructor' ? 
+                                <button disabled onClick={() => handleMakeInstructor(user)} className='btn btn-dark'><GiTeacher></GiTeacher></button> : 
+                                <button onClick={() => handleMakeInstructor(user)} className='btn btn-dark'><GiTeacher></GiTeacher></button>
+                                }
+                            </td>
                         </tr>)
                     }
                 </tbody>
