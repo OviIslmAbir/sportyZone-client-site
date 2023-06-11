@@ -31,7 +31,7 @@ const AddAClass = () => {
           totalEnroll: 0,
           status: 'pending'
         }
-        axios.post('http://localhost:5000/instructorClasses', addClass)
+        axios.post('http://localhost:5000/instructorAllClasses', addClass)
         .then(res => {
             if(res.data.insertedId){
                 Swal.fire({

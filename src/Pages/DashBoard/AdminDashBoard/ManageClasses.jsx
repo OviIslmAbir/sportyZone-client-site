@@ -53,16 +53,6 @@ const ManageClasses = () => {
                 })
 
           })
-        fetch(`http://localhost:5000/instructorClasses/${classes._id}`, {
-            method: "PUT",
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(updateStatus)
-        })
-        .then(res => res.json())
-        .then(data => {})
-
     }
     const handleDeny = classes => {
         let status = classes.status 
@@ -70,7 +60,7 @@ const ManageClasses = () => {
         const updateStatus = {
             status: approvedStatus
         }
-        fetch(`http://localhost:5000/instructorClasses/${classes._id}`, {
+        fetch(`http://localhost:5000/instructorAllClasses/${classes._id}`, {
             method: "PUT",
             headers: {
                 'content-type': 'application/json'

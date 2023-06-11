@@ -15,7 +15,7 @@ const Feedback = () => {
         const setFeedback = {
            feedback
         }
-        fetch(`http://localhost:5000/instructorClasses/${id.id}`, {
+        fetch(`http://localhost:5000/instructorAllClasses/${id.id}`, {
             method: "PATCH",
             headers: {
                 'content-type': 'application/json'
