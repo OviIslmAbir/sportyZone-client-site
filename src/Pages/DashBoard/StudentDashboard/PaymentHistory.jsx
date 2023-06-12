@@ -8,7 +8,7 @@ const PaymentHistory = () => {
     const [history, setHistory] = useState([])
     const{user} = useContext(AuthContext)
     useEffect(() => {
-        axios.get(`http://localhost:5000/payments?email=${user?.email}`)
+        axios.get(`https://assignment-12-server-site-ecru.vercel.app/payments?email=${user?.email}`)
         .then(res => setHistory(res.data))
     }, [])
     console.log(history)

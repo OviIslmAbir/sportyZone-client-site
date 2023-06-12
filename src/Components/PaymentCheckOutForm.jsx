@@ -19,7 +19,7 @@ const PaymentCheckOutForm = () => {
 
     const navigate = useNavigate()
     useEffect(() => {
-        axios.post('http://localhost:5000/create-payment-intent', {price})
+        axios.post('https://assignment-12-server-site-ecru.vercel.app/create-payment-intent', {price})
           .then(res => {
             setClientSecret(res.data.clientSecret)
           })
@@ -73,7 +73,7 @@ const PaymentCheckOutForm = () => {
                 selectedClass: selectedClass._id,
                 className: selectedClass.name
             }
-            axios.post('http://localhost:5000/payments', payment)
+            axios.post('https://assignment-12-server-site-ecru.vercel.app/payments', payment)
             .then(res => {
                 if(res.data.result.insertedId){
                     Swal.fire({
@@ -92,7 +92,7 @@ const PaymentCheckOutForm = () => {
                   image: selectedClass.image,
                   email: user?.email
                 }
-                axios.post(`http://localhost:5000/enrolled?email=${user?.email}`, enrolledItem)
+                axios.post(`https://assignment-12-server-site-ecru.vercel.app/enrolled?email=${user?.email}`, enrolledItem)
             })
           }
     }

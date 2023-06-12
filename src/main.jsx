@@ -37,7 +37,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
-    // errorElement: <ErrorPage/>, 
+    errorElement: <ErrorPage/>, 
     children: [
       {
         path: "/",
@@ -64,7 +64,7 @@ const router = createBrowserRouter([
   {
     path: "/dashboard",
     element: <DashBoard></DashBoard>,
-    // errorElement: <ErrorPage/>, 
+    errorElement: <ErrorPage/>, 
     children: [
       {
         path: '/dashboard',
@@ -82,7 +82,7 @@ const router = createBrowserRouter([
       {
         path: 'selectedClasses/:id',
         element: <PrivateRoute><Payment></Payment></PrivateRoute>,
-        loader : ({params}) => fetch(`http://localhost:5000/selectedClasses/${params.id}`)
+        loader : ({params}) => fetch(`https://assignment-12-server-site-ecru.vercel.app/selectedClasses/${params.id}`)
       },
       {
         path: 'paymentHistory',

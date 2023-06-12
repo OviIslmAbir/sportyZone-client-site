@@ -7,7 +7,7 @@ const useAdmin = () => {
     const { data: isAdmin, isLoading: isAdminLoading} = useQuery({
         queryKey: ['isAdmin', user?.email],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/users/admin/${user?.email}`);
+            const res = await fetch(`https://assignment-12-server-site-ecru.vercel.app/users/admin/${user?.email}`);
             const data = await res.json()
             return data.admin;
         }

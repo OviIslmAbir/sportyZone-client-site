@@ -9,7 +9,7 @@ const MyClasses = () => {
     const[instructorClasses, setInstructorClasses] = useState([])
     const {user} = useContext(AuthContext)
     useEffect(() => {
-        axios.get(`http://localhost:5000/instructorClasses?email=${user?.email}`)
+        axios.get(`https://assignment-12-server-site-ecru.vercel.app/instructorClasses?email=${user?.email}`)
         .then(res => setInstructorClasses(res.data))
     })
     return (

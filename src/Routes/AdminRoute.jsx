@@ -3,11 +3,11 @@ import { useContext } from "react";
 import useAdmin from "../Hooks/useAdmin";
 import { AuthContext } from "../Provider/AuthProvider";
 
-
 const AdminRoute = ({ children }) => {
     const { user, loading } = useContext(AuthContext);
     const [isAdmin, isAdminLoading] = useAdmin();
     const location = useLocation();
+
 
     if(loading || isAdminLoading){
         return(

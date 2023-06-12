@@ -9,7 +9,7 @@ const ManageClasses = () => {
     useTitle("Manage Classes")
     const [allClasses, setAllClasses] = useState([])
     useEffect(() => {
-        axios.get('http://localhost:5000/instructorAllClasses')
+        axios.get('https://assignment-12-server-site-ecru.vercel.app/instructorAllClasses')
         .then(res => 
             setAllClasses(res.data)
         )
@@ -21,7 +21,7 @@ const ManageClasses = () => {
         const updateStatus = {
             status: approvedStatus
         }
-        fetch(`http://localhost:5000/instructorAllClasses/${classes._id}`, {
+        fetch(`https://assignment-12-server-site-ecru.vercel.app/instructorAllClasses/${classes._id}`, {
             method: "PUT",
             headers: {
                 'content-type': 'application/json'
@@ -37,7 +37,7 @@ const ManageClasses = () => {
                 availableSeats: classes.availableSeats,
                 price: classes.price
              } 
-             axios.post('http://localhost:5000/classes', approvedClass)
+             axios.post('https://assignment-12-server-site-ecru.vercel.app/classes', approvedClass)
                 .then(res => {
                     if(res.data.insertedId){
                         Swal.fire({
@@ -60,7 +60,7 @@ const ManageClasses = () => {
         const updateStatus = {
             status: approvedStatus
         }
-        fetch(`http://localhost:5000/instructorAllClasses/${classes._id}`, {
+        fetch(`https://assignment-12-server-site-ecru.vercel.app/instructorAllClasses/${classes._id}`, {
             method: "PUT",
             headers: {
                 'content-type': 'application/json'

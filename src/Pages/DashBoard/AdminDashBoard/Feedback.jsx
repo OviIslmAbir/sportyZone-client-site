@@ -15,7 +15,7 @@ const Feedback = () => {
         const setFeedback = {
            feedback
         }
-        fetch(`http://localhost:5000/instructorAllClasses/${id.id}`, {
+        fetch(`https://assignment-12-server-site-ecru.vercel.app/instructorAllClasses/${id.id}`, {
             method: "PATCH",
             headers: {
                 'content-type': 'application/json'

@@ -5,7 +5,7 @@ import '../Style/Style.css'
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2'
 const SocialLogin = () => {
-    const {googleLogin, user} = useContext(AuthContext)
+    const {googleLogin} = useContext(AuthContext)
     const navigate = useNavigate()
     const handleGoogleLogin = () => {
         googleLogin()
@@ -13,7 +13,7 @@ const SocialLogin = () => {
              const loggedUser = result.user
              console.log(loggedUser)
              const saveUser = {name: loggedUser.displayName, email: loggedUser.email}
-             fetch('http://localhost:5000/users', {
+             fetch('https://assignment-12-server-site-ecru.vercel.app/users', {
                  method: "POST",
                  headers: {
                      'content-type' : 'application/json'
@@ -28,8 +28,9 @@ const SocialLogin = () => {
                                  title: 'User created successfully.',
                                  showConfirmButton: false,
                                  timer: 1500
-                             });
-                             navigate('/');
+                            });
+
+                            navigate('/');
                          }
                      })
           })

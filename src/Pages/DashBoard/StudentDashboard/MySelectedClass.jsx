@@ -23,7 +23,7 @@ const MySelectedClass = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/selectedClasses/${selectedClass._id}`, {
+                fetch(`https://assignment-12-server-site-ecru.vercel.app/selectedClasses/${selectedClass._id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())

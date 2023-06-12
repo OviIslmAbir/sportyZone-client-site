@@ -29,7 +29,7 @@ const Register = () => {
             updateUserProfile(data.name, data.photo)
                .then(() => {
                     const saveUser = {name: data.name, email: data.email, image: data.photo}
-                    fetch('http://localhost:5000/users', {
+                    fetch('https://assignment-12-server-site-ecru.vercel.app/users', {
                         method: "POST",
                         headers: {
                             'content-type' : 'application/json'

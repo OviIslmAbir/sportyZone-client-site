@@ -14,7 +14,7 @@ const SingleClass = (props) => {
     const handleAddClass = () => {
         if(user && user.email){  
             const selectedClasses = { name, image, price, email: user?.email, userName: user?.displayName}
-            fetch('http://localhost:5000/selectedClasses', {
+            fetch('https://assignment-12-server-site-ecru.vercel.app/selectedClasses', {
                 method: "POST",
                 headers: {
                     'content-type': 'application/json'
